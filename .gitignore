@@ -1,0 +1,12 @@
+# Ambiente e credenciais
+.env
+*.env.local
+
+# Dados locais e volumes
+*.log
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# n8n local data (caso venha a mapear bind mount no futuro)
+.n8n/
