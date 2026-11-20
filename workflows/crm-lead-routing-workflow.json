@@ -1,0 +1,123 @@
+{
+  "name": "CRM Lead Routing Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "crm-lead",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.2,
+      "position": [
+        -352,
+        -16
+      ],
+      "id": "fd5eb932-cd99-41eb-b937-5782ad6068c1",
+      "name": "Webhook",
+      "webhookId": "0f6ebb2b-566d-4d8b-99c7-6e32d3325c47"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 4
+          },
+          "conditions": [
+            {
+              "id": "217b7935-8f27-450c-8b1a-da1bfd7a171f",
+              "leftValue": "={{ $json.body.status }}",
+              "rightValue": "=new_lead",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.4,
+      "position": [
+        -128,
+        -16
+      ],
+      "id": "f191b630-51cf-419a-affe-c6df863a0a27",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "url": "https://jsonplaceholder.typicode.com/posts/1",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        96,
+        -112
+      ],
+      "id": "bdfeae19-25f2-4f9a-bcf5-7a1c21a8cf41",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        96,
+        80
+      ],
+      "id": "4206d913-b6ff-404b-993b-0b8ada81c396",
+      "name": "No Operation, do nothing"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "473f81bd-df1d-4b17-a1df-605d372a97be",
+  "meta": {
+    "instanceId": "9299c7efd6b7bf4e2711224f0671dbe57a0a55d6c39d5d95cd09661bd436b082"
+  },
+  "nodeGroups": [],
+  "id": "W6E6cbQ8vjusZ32D",
+  "tags": []
+}
