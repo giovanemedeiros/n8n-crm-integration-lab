@@ -20,7 +20,7 @@ n8n-crm-integration-lab/
 ├── payloads/
 │   └── n8n-crm-integration-lab.postman_collection.json  # Coleção do Postman para validação dos cenários
 ├── workflows/
-│   └── CRM Lead Routing Workflow.json                   # Definição exportada do fluxo no n8n
+│   └── crm-lead-routing-workflow.json                   # Definição exportada do fluxo no n8n
 ├── .gitignore                                           # Proteção contra arquivos locais e credenciais
 ├── docker-compose.yml                                   # Orquestração do container do n8n com volume persistente
 └── README.md                                            # Documentação técnica do projeto
@@ -42,8 +42,8 @@ n8n-crm-integration-lab/
    http://localhost:5678
    ```
 3. Importar o fluxo:
-   - Na interface do n8n, acesse o menu principal e selecione "Import from File".
-   - Selecione o arquivo localizado em `workflows/CRM Lead Routing Workflow.json`.
+   - Na interface do n8n, no menu principal crie um novo fluxo de trabalho em "New Workflow". Depois selecione os três pontos verticais (...), selecione "Import" e depois selecione "Import from File".
+   - Selecione e importe o arquivo localizado em `workflows/crm-lead-routing-workflow.json`.
 
 ## Como Testar
 
